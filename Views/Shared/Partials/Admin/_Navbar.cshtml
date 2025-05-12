@@ -1,0 +1,52 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+    <div class="container">
+        <!-- Logo and Brand -->
+        <a asp-controller="Admin" asp-action="Index" class="navbar-brand d-flex align-items-center">
+            <i class="fa fa-cogs me-2"></i>Admin Paneli
+        </a>
+
+        <!-- Toggle Button for Mobile View -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+            aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar Links -->
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a asp-controller="Kategori" asp-action="Index" class="nav-link">Kategori</a>
+                </li>
+                <li class="nav-item">
+                    <a asp-controller="Urun" asp-action="Index" class="nav-link">Ürün</a>
+                </li>
+                <li class="nav-item">
+                    <a asp-controller="Slider" asp-action="Index" class="nav-link">Slider</a>
+                </li>
+                <li class="nav-item">
+                    <a asp-controller="Role" asp-action="Index" class="nav-link">Role</a>
+                </li>
+                <li class="nav-item">
+                    <a asp-controller="User" asp-action="Index" class="nav-link">Kullanıcı</a>
+                </li>
+                <li class="nav-item">
+                    <a asp-controller="Order" asp-action="Index" class="nav-link">Sipariş</a>
+                </li>
+            </ul>
+
+            <!-- User Information and Logout -->
+            <ul class="navbar-nav mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fa fa-user-circle me-2"></i>@User.Identity?.Name
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a asp-controller="Account" asp-action="LogOut" class="nav-link">
+                        <i class="fa fa-sign-out-alt me-2"></i>Çıkış
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,257 @@
+@model IEnumerable<dotnet_store.Models.Address>
+
+@section Bar {
+    <section class="section-bar p-3">
+        <div class="container">
+            <nav>
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item">
+                        <a href="/" class="text-white text-decoration-none">Anasayfa</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Adreslerim</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+}
+
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-3 mb-4 mb-md-0">
+                @await Html.PartialAsync("Partials/Site/_AccountSidebar")
+            </div>
+            <div class="col-12 col-md-9">
+                <div class="card border-0 shadow-sm rounded-4">
+                    <div class="card-header bg-white border-0 py-4">
+                        <h4 class="card-title text-center mb-0 text-primary">
+                            <i class="fas fa-map-marker-alt me-2"></i>Kayıtlı Adreslerim
+                        </h4>
+                    </div>
+                    <div class="card-body p-4 p-md-5">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Adres Adı</th>
+                                        <th>Şehir</th>
+                                        <th>Posta Kodu</th>
+                                        <th>Ülke</th>
+                                        <th>Telefon Numarası</th>
+                                        <th>İşlemler</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Model.Any())
+                                    {
+                                        @foreach (var address in Model)
+                                        {
+                                            <tr>
+                                                <td>@address.AdresAd</td>
+                                                <td>@address.Sehir</td>
+                                                <td>@address.PostaKodu</td>
+                                                <td>@address.Country</td>
+                                                <td>@(address.TelefonNumarasi ?? "-")</td>
+                                                <td>
+                                                    <a asp-action="Edit" asp-route-id="@address.Id"
+                                                        class="btn btn-primary btn-sm rounded-3 me-2">
+                                                        <i class="fas fa-edit me-1"></i>Düzenle
+                                                    </a>
+                                                    <a asp-action="Delete" asp-route-id="@address.Id"
+                                                        class="btn btn-danger btn-sm rounded-3 delete-btn"
+                                                        data-id="@address.Id">
+                                                        <i class="fas fa-trash me-1"></i>Sil
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <tr>
+                                            <td colspan="6" class="text-center text-muted py-3">Kayıtlı adres bulunamadı.
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="mt-4">
+                            <a href="@Url.Action("Create", "Address")"
+                                class="btn btn-primary btn-lg rounded-3 px-4 d-flex align-items-center justify-content-center">
+                                <i class="fas fa-plus me-2"></i>
+                                <span>Yeni Adres Ekle</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            // Silme işlemi için modern bir onay diyaloğu
+            $('.delete-btn').on('click', function (e) {
+                e.preventDefault();
+                var url = $(this).attr('href');
+                if (confirm('Bu adresi silmek istediğinize emin misiniz?')) {
+                    window.location.href = url;
+                }
+            });
+
+            // Tablo satırlarına hover efekti
+            $('table tbody tr').hover(
+                function () {
+                    $(this).addClass('bg-light');
+                },
+                function () {
+                    $(this).removeClass('bg-light');
+                }
+            );
+        });
+    </script>
+}
+
+<style>
+    .bg-gradient-primary {
+        background: linear-gradient(90deg, #00aaff, #0088cc);
+    }
+
+    .card {
+        border-radius: 1rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15) !important;
+    }
+
+    .table {
+        border-collapse: separate;
+        border-spacing: 0;
+    }
+
+    .table th,
+    .table td {
+        vertical-align: middle;
+        padding: 0.75rem;
+    }
+
+    .table thead th {
+        border-bottom: 2px solid #dee2e6;
+        font-weight: 600;
+        color: #495057;
+    }
+
+    .table-hover tbody tr:hover {
+        background-color: #f8f9fa;
+    }
+
+    .btn-primary {
+        background: #00aaff;
+        border: none;
+        transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn-primary:hover {
+        background: #0088cc;
+        transform: translateY(-2px);
+    }
+
+    .btn-danger {
+        background: #dc3545;
+        border: none;
+        transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn-danger:hover {
+        background: #b02a37;
+        transform: translateY(-2px);
+    }
+
+    /* Mobil Görünüm */
+    @@media (max-width: 768px) {
+        .container {
+            padding: 0 1rem;
+        }
+
+        .card {
+            border-radius: 0;
+            margin: 0 -1rem;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        .btn-lg {
+            padding: 0.75rem 1rem;
+            font-size: 1rem;
+        }
+
+        .breadcrumb {
+            font-size: 0.85rem;
+        }
+
+        .table-responsive {
+            margin: 0 -1rem;
+        }
+
+        .table th,
+        .table td {
+            font-size: 0.9rem;
+        }
+    }
+
+    .section-bar {
+        background: linear-gradient(90deg, #1a1a1a, #2a2a2a);
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .breadcrumb {
+        background: transparent;
+        font-size: 1rem;
+    }
+
+    .breadcrumb-item a {
+        color: #ffffff;
+        transition: color 0.3s ease;
+    }
+
+    .breadcrumb-item a:hover {
+        color: #00aaff;
+    }
+
+    .breadcrumb-item.active {
+        color: #b0b0b0;
+    }
+
+    .breadcrumb-item+.breadcrumb-item::before {
+        color: #b0b0b0;
+    }
+
+    .container {
+        max-width: 1200px;
+        padding: 0 1rem;
+    }
+
+    @@media (max-width: 768px) {
+        .section-bar {
+            padding: 0.75rem;
+            border-radius: 0;
+        }
+
+        .breadcrumb {
+            font-size: 0.9rem;
+        }
+
+        .container {
+            padding: 0 0.75rem;
+        }
+    }
+</style>

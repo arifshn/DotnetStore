@@ -1,0 +1,122 @@
+<div class="row">
+    <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card border-0 shadow-sm rounded-4">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col">
+                        <div class="fw-bold text-primary text-uppercase mb-1">Satış</div>
+                        <div class="h5 mb-0 fw-bold">@ViewBag.TotalSales.ToString("C")</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-dollar-sign fa-2x text-gray"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card border-0 shadow-sm rounded-4">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col">
+                        <div class="fw-bold text-primary text-uppercase mb-1">Sipariş</div>
+                        <div class="h5 mb-0 fw-bold">@ViewBag.OrderCount</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fa-solid fa-truck fa-2x text-gray"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card border-0 shadow-sm rounded-4">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col">
+                        <div class="fw-bold text-primary text-uppercase mb-1">Ürün</div>
+                        <div class="h5 mb-0 fw-bold">@ViewBag.ProductCount</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fa-solid fa-list fa-2x text-gray"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Card */
+    .card {
+        border: none;
+        border-radius: 1rem;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+    }
+
+    .card-body {
+        padding: 1.5rem;
+    }
+
+    /* Text */
+    .text-primary {
+        color: #00aaff !important;
+    }
+
+    .text-gray {
+        color: #b0b0b0 !important;
+    }
+
+    .fw-bold {
+        font-weight: 600;
+    }
+
+    /* Layout */
+    .row.no-gutters {
+        margin-right: 0;
+        margin-left: 0;
+    }
+
+    .row.no-gutters>.col,
+    .row.no-gutters>[class*="col-"] {
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    /* Mobile View */
+    @@media (max-width: 768px) {
+        .card {
+            margin: 0 -0.75rem;
+            border-radius: 0;
+        }
+
+        .card-body {
+            padding: 1rem;
+        }
+
+        .h5 {
+            font-size: 1.25rem;
+        }
+
+        .fa-2x {
+            font-size: 1.5rem;
+        }
+    }
+
+    @@media (max-width: 575.98px) {
+        .card-body {
+            padding: 0.75rem;
+        }
+
+        .h5 {
+            font-size: 1rem;
+        }
+    }
+</style>

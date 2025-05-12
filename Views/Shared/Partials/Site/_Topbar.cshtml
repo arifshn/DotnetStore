@@ -1,0 +1,284 @@
+<section class="top-bar py-3 bg-light shadow-sm">
+    <div class="container">
+        <div class="row gy-2 align-items-center">
+            <div class="col-lg-2 col-sm-4 col-4">
+                <a href="/" class="navbar-brand fw-bold d-flex align-items-center text-primary">
+                    <i class="fas fa-truck-fast me-2" style="color: #00aaff;"></i>
+                    <span class="fs-5">calmora</span>
+                </a>
+            </div>
+
+            <div class="col-lg-5 col-sm-8 col-8 order-lg-last">
+                <div class="d-flex justify-content-end gap-2 flex-wrap">
+                    @if (User.Identity?.IsAuthenticated == true)
+                    {
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <a asp-controller="Admin" asp-action="Index" class="btn btn-danger btn-sm d-flex align-items-center"
+                                target="_blank">
+                                <i class="fas fa-lock me-1"></i>
+                                <span class="d-none d-lg-inline">Admin</span>
+                            </a>
+                        }
+                        <a asp-controller="Account" asp-action="EditUser"
+                            class="btn btn-outline-primary btn-sm d-flex align-items-center">
+                            <i class="fas fa-user me-1"></i>
+                            <span class="d-none d-lg-inline">Hesabım</span>
+                        </a>
+                        <a asp-controller="Account" asp-action="LogOut"
+                            class="btn btn-outline-primary btn-sm d-flex align-items-center">
+                            <i class="fas fa-right-from-bracket me-1"></i>
+                            <span class="d-none d-lg-inline">Çıkış Yap</span>
+                        </a>
+                    }
+                    else
+                    {
+                        <a asp-controller="Account" asp-action="Login"
+                            class="btn btn-outline-primary btn-sm d-flex align-items-center">
+                            <i class="fas fa-right-to-bracket me-1"></i>
+                            <span class="d-none d-lg-inline">Giriş Yap</span>
+                        </a>
+                        <a asp-controller="Account" asp-action="Create"
+                            class="btn btn-outline-primary btn-sm d-flex align-items-center">
+                            <i class="fas fa-user-plus me-1"></i>
+                            <span class="d-none d-lg-inline">Üye Ol</span>
+                        </a>
+                    }
+                    <a asp-controller="Cart" asp-action="Index"
+                        class="btn btn-outline-primary btn-sm d-flex align-items-center position-relative">
+                        <i class="fas fa-shopping-cart me-1"></i>
+                        <span class="d-none d-lg-inline">Sepetim</span>
+                        <span class="badge bg-danger position-absolute top-0 end-0 translate-middle-x d-none"
+                            id="cartCount">0</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-5">
+                <form asp-controller="Urun" asp-action="List" method="get" id="searchForm">
+                    <div class="input-group">
+                        <input name="q" type="text" class="form-control" id="searchInput" placeholder="Ürün ara..."
+                            value="@ViewData["q"]" style="border-color: #b0b0b0;" />
+                        <button type="submit" class="btn btn-primary" style="background: #00aaff; border: none;">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            // Arama formu submit sırasında spinner
+            $('#searchForm').on('submit', function () {
+                $('#searchForm button .spinner-border').removeClass('d-none');
+                $('#searchForm button').prop('disabled', true);
+                setTimeout(function () {
+                    $('#searchForm button .spinner-border').addClass('d-none');
+                    $('#searchForm button').prop('disabled', false);
+                }, 2000);
+            });
+
+            // Örnek: Sepet badge'i dinamik güncelleme (backend'den veri alınmalı)
+            // var cartCount = 3; // Örnek veri
+            // if (cartCount > 0) {
+            //     $('#cartCount').text(cartCount).removeClass('d-none');
+            // }
+        });
+    </script>
+}
+
+<style>
+    .top-bar {
+        background: #f8f9fa;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-brand {
+        font-size: 1.5rem;
+        transition: all 0.3s ease;
+        color: #00aaff !important;
+    }
+
+    .navbar-brand:hover {
+        transform: translateY(-2px);
+        opacity: 0.9;
+    }
+
+    .btn {
+        border-radius: 0.5rem;
+        transition: all 0.3s ease;
+        height: 44px;
+    }
+
+    .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-sm {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .btn-outline-primary {
+        border-color: #00aaff;
+        color: #00aaff;
+    }
+
+    .btn-outline-primary:hover {
+        background: #00aaff;
+        color: #ffffff;
+    }
+
+    .btn-danger {
+        background: #dc3545;
+        border: none;
+    }
+
+    .btn-danger:hover {
+        background: #b02a37;
+    }
+
+    .input-group {
+        position: relative;
+        display: flex;
+        align-items: center;
+        width: 100%;
+    }
+
+    .input-group .form-control {
+        border-radius: 0.5rem 0 0 0.5rem;
+        padding: 0.75rem 1rem;
+        transition: all 0.3s ease;
+        background: #ffffff;
+        height: 44px;
+        font-size: 1.1rem;
+        flex: 1;
+    }
+
+    .input-group .form-control:focus {
+        background: #ffffff;
+        border-color: #00aaff;
+        box-shadow: 0 0 0 0.2rem rgba(0, 170, 255, 0.25);
+        color: #495057;
+    }
+
+    .input-group button {
+        border-radius: 0 0.5rem 0.5rem 0;
+        padding: 0.5rem 0.75rem;
+        height: 44px;
+        font-size: 1.1rem;
+        flex-shrink: 0;
+    }
+
+    .input-group button i {
+        font-size: 1.2rem;
+    }
+
+    .badge {
+        font-size: 0.75rem;
+        padding: 0.3rem 0.5rem;
+        border-radius: 0.5rem;
+    }
+
+    /* Mobil Görünüm */
+    @@media (max-width: 991.98px) {
+        .top-bar {
+            padding: 0.5rem 0;
+        }
+
+        .btn-sm {
+            padding: 0.4rem 0.8rem;
+            min-width: 40px;
+        }
+
+        .btn i {
+            margin-right: 0.5rem;
+        }
+
+        .input-group {
+            flex-direction: column;
+            align-items: stretch;
+            width: 100%;
+        }
+
+        .input-group .form-control {
+            border-radius: 0.5rem;
+            height: 44px;
+            font-size: 1.1rem;
+            padding: 0.75rem 1rem;
+            margin-bottom: 0.5rem;
+            width: 100%;
+        }
+
+        .input-group .form-control:focus {
+            background: #ffffff;
+            border-color: #00aaff;
+            box-shadow: 0 0 0 0.2rem rgba(0, 170, 255, 0.25);
+            color: #495057;
+        }
+
+        .input-group button {
+            border-radius: 0.5rem;
+            height: 44px;
+            font-size: 1.1rem;
+            padding: 0.5rem 0.75rem;
+            width: 100%;
+        }
+
+        .input-group button i {
+            font-size: 1.2rem;
+        }
+    }
+
+    @@media (max-width: 575.98px) {
+        .navbar-brand {
+            font-size: 1.2rem;
+        }
+
+        .btn-sm {
+            padding: 0.3rem 0.6rem;
+            min-width: 36px;
+            height: 36px;
+            font-size: 0.85rem;
+        }
+
+        .btn i {
+            font-size: 1rem;
+        }
+
+        .input-group .form-control {
+            border-radius: 0.5rem;
+            height: 44px;
+            font-size: 1.1rem;
+            padding: 0.75rem 1rem;
+        }
+
+        .input-group .form-control:focus {
+            background: #ffffff;
+            border-color: #00aaff;
+            box-shadow: 0 0 0 0.2rem rgba(0, 170, 255, 0.25);
+            color: #495057;
+        }
+
+        .input-group button {
+            border-radius: 0.5rem;
+            height: 44px;
+            font-size: 1.1rem;
+            padding: 0.5rem 0.75rem;
+        }
+
+        .input-group button i {
+            font-size: 1.2rem;
+        }
+
+        .badge {
+            font-size: 0.65rem;
+            padding: 0.2rem 0.4rem;
+        }
+    }
+</style>

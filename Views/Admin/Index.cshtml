@@ -1,0 +1,62 @@
+@model IEnumerable<dotnet_store.Models.Order>
+@{
+    Layout = "_AdminLayout";
+}
+
+<section class="py-5">
+    <div class="container">
+        @await Html.PartialAsync("Partials/Admin/_AdminCards")
+        @await Html.PartialAsync("Partials/Admin/_NewOrders")
+    </div>
+</section>
+<style>
+    .section-bar {
+        background: linear-gradient(90deg, #1a1a1a, #2a2a2a);
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .breadcrumb {
+        background: transparent;
+        font-size: 1rem;
+    }
+
+    .breadcrumb-item a {
+        color: #ffffff;
+        transition: color 0.3s ease;
+    }
+
+    .breadcrumb-item a:hover {
+        color: #00aaff;
+        text-decoration: underline;
+    }
+
+    .breadcrumb-item.active {
+        color: #b0b0b0;
+        font-weight: 500;
+    }
+
+    .breadcrumb-item+.breadcrumb-item::before {
+        color: #b0b0b0;
+    }
+
+    .container {
+        max-width: 1200px;
+        padding: 0 1rem;
+    }
+
+    @@media (max-width: 768px) {
+        .section-bar {
+            padding: 0.75rem;
+            border-radius: 0;
+        }
+
+        .breadcrumb {
+            font-size: 0.9rem;
+        }
+
+        .container {
+            padding: 0 0.75rem;
+        }
+    }
+</style>

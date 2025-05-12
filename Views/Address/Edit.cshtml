@@ -1,0 +1,277 @@
+@model dotnet_store.Models.Address
+
+@section Bar {
+    <section class="section-bar p-3">
+        <div class="container">
+            <nav>
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item">
+                        <a href="/" class="text-white text-decoration-none">Anasayfa</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="@Url.Action("Index", "Address")" class="text-white text-decoration-none">Adreslerim</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Adres Düzenle</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+}
+
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-3 mb-4 mb-md-0">
+                @await Html.PartialAsync("Partials/Site/_AccountSidebar")
+            </div>
+            <div class="col-12 col-md-9">
+                <div class="card border-0 shadow-sm rounded-4">
+                    <div class="card-header bg-white border-0 py-4">
+                        <h4 class="card-title text-center mb-0 text-primary">
+                            <i class="fas fa-map-marker-alt me-2"></i>Favori Adresini Düzenle
+                        </h4>
+                    </div>
+                    <div class="card-body p-4 p-md-5">
+                        <div asp-validation-summary="All" class="alert alert-danger rounded-3" role="alert"
+                            style="display: none;"></div>
+                        <form asp-controller="Address" asp-action="Edit" method="post" id="addressForm">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" asp-for="Id" />
+                            <input type="hidden" asp-for="UserId" />
+                            <div class="row g-3">
+                                <div class="col-12">
+                                    <div class="form-floating mb-3">
+                                        <input asp-for="AdresAd" class="form-control rounded-3"
+                                            placeholder="Adres adı" />
+                                        <label asp-for="AdresAd">Adres Adı</label>
+                                        <span asp-validation-for="AdresAd" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating mb-3">
+                                        <input asp-for="AdresSatiri" class="form-control rounded-3"
+                                            placeholder="Adres satırı" />
+                                        <label asp-for="AdresSatiri">Adres Satırı</label>
+                                        <span asp-validation-for="AdresSatiri" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <input asp-for="Sehir" class="form-control rounded-3" placeholder="Şehir" />
+                                        <label asp-for="Sehir">Şehir</label>
+                                        <span asp-validation-for="Sehir" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <input asp-for="PostaKodu" class="form-control rounded-3"
+                                            placeholder="Posta kodu" />
+                                        <label asp-for="PostaKodu">Posta Kodu</label>
+                                        <span asp-validation-for="PostaKodu" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating mb-3">
+                                        <input asp-for="Country" class="form-control rounded-3" placeholder="Ülke" />
+                                        <label asp-for="Country">Ülke</label>
+                                        <span asp-validation-for="Country" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating mb-3">
+                                        <input asp-for="TelefonNumarasi" class="form-control rounded-3"
+                                            placeholder="Telefon numarası" />
+                                        <label asp-for="TelefonNumarasi">Telefon Numarası</label>
+                                        <span asp-validation-for="TelefonNumarasi" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between mt-4">
+                                <button asp-action="Index" asp-controller="Address" type="submit"
+                                    class="btn btn-primary btn-lg rounded-3 px-4 d-flex align-items-center justify-content-center gap-2"
+                                    id="submitButton">
+                                    <span class="spinner-border spinner-border-sm d-none" role="status"
+                                        aria-hidden="true"></span>
+                                    <span>Kaydet</span>
+                                </button>
+                                <a asp-action="Index" asp-controller="Address"
+                                    class="btn btn-outline-secondary btn-lg rounded-3 px-4 d-flex align-items-center justify-content-center">
+                                    <span>İptal</span>
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        $(document).ready(function () {
+            // Validation summary'i göster/gizle
+            $("#addressForm").on("submit", function () {
+                $("#submitButton .spinner-border").removeClass("d-none");
+                $("#submitButton").prop("disabled", true);
+                if ($(".text-danger:visible").length > 0) {
+                    $(".alert-danger").show();
+                }
+            });
+
+            // Form submit başarılıysa spinner'ı kaldır
+            $("#addressForm").on("submit", function (e) {
+                if ($(this).valid()) {
+                    setTimeout(function () {
+                        $("#submitButton .spinner-border").addClass("d-none");
+                        $("#submitButton").prop("disabled", false);
+                    }, 2000);
+                }
+            });
+        });
+    </script>
+}
+
+<style>
+    .bg-gradient-primary {
+        background: linear-gradient(90deg, #00aaff, #0088cc);
+    }
+
+    .card {
+        border-radius: 1rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15) !important;
+    }
+
+    .form-floating>.form-control:focus,
+    .form-floating>.form-control:not(:placeholder-shown) {
+        padding-top: 1.625rem;
+        padding-bottom: 0.625rem;
+    }
+
+    .form-floating>.form-control:focus~label,
+    .form-floating>.form-control:not(:placeholder-shown)~label {
+        opacity: 0.65;
+        transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
+    }
+
+    .form-control {
+        border: 1px solid #ced4da;
+        transition: border-color 0.3s ease;
+    }
+
+    .form-control:focus {
+        border-color: #00aaff;
+        box-shadow: 0 0 0 0.2rem rgba(0, 170, 255, 0.25);
+    }
+
+    .btn-primary {
+        background: #00aaff;
+        border: none;
+        transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn-primary:hover {
+        background: #0088cc;
+        transform: translateY(-2px);
+    }
+
+    .btn-outline-secondary {
+        border-color: #6c757d;
+        color: #6c757d;
+        transition: border-color 0.3s ease, color 0.3s ease;
+    }
+
+    .btn-outline-secondary:hover {
+        border-color: #5a6268;
+        color: #5a6268;
+        background: #f8f9fa;
+    }
+
+    .alert-danger {
+        background: #f8d7da;
+        border: none;
+        border-radius: 0.5rem;
+    }
+
+    @@media (max-width: 768px) {
+        .container {
+            padding: 0 1rem;
+        }
+
+        .card {
+            border-radius: 0;
+            margin: 0 -1rem;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        .btn-lg {
+            padding: 0.75rem 1rem;
+            font-size: 1rem;
+        }
+
+        .form-floating>label {
+            font-size: 0.9rem;
+        }
+
+        .breadcrumb {
+            font-size: 0.85rem;
+        }
+    }
+
+    .section-bar {
+        background: linear-gradient(90deg, #1a1a1a, #2a2a2a);
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .breadcrumb {
+        background: transparent;
+        font-size: 1rem;
+    }
+
+    .breadcrumb-item a {
+        color: #ffffff;
+        transition: color 0.3s ease;
+    }
+
+    .breadcrumb-item a:hover {
+        color: #00aaff;
+    }
+
+    .breadcrumb-item.active {
+        color: #b0b0b0;
+    }
+
+    .breadcrumb-item+.breadcrumb-item::before {
+        color: #b0b0b0;
+    }
+
+    .container {
+        max-width: 1200px;
+        padding: 0 1rem;
+    }
+
+    @@media (max-width: 768px) {
+        .section-bar {
+            padding: 0.75rem;
+            border-radius: 0;
+        }
+
+        .breadcrumb {
+            font-size: 0.9rem;
+        }
+
+        .container {
+            padding: 0 0.75rem;
+        }
+    }
+</style>

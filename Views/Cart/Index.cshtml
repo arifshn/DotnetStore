@@ -1,0 +1,467 @@
+@model Cart
+
+@section Bar {
+    <section class="section-bar p-3">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item">
+                        <a href="/" class="text-white text-decoration-none">Anasayfa</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Alışveriş Sepeti</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+}
+
+<section class="mt-3">
+    <div class="container">
+        @if (Model.CartItems.Count == 0)
+        {
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <i class="fa-solid fa-triangle-exclamation me-2"></i>
+                Sepette bir ürün yok.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+        else
+        {
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="card shadow-sm mb-3">
+                        <div class="card-header text-white">
+                            <h2 class="h6 mb-0">
+                                <i class="fa-solid fa-cart-shopping me-2"></i>
+                                Sepetim
+                            </h2>
+                        </div>
+                        <div class="card-body p-0">
+                            <ul class="list-group list-group-flush">
+                                @foreach (var item in Model.CartItems)
+                                {
+                                    <li class="list-group-item">
+                                        <div class="row align-items-center">
+                                            <div class="col-md-6">
+                                                <div class="d-flex align-items-center">
+                                                    @if (!string.IsNullOrEmpty(item.Urun.Resim))
+                                                    {
+                                                        <img src="~/img/@item.Urun.Resim" class="me-3 rounded" style="width: 80px; height: 80px; object-fit: cover;" alt="@item.Urun.UrunAdi">
+                                                    }
+                                                    else
+                                                    {
+                                                        <div class="me-3 rounded" style="width: 80px; height: 80px; background-color: #f8f9fa; display: flex; align-items: center; justify-content: center;">
+                                                            <i class="fa-solid fa-image text-muted"></i>
+                                                        </div>
+                                                    }
+                                                    <div>
+                                                        <h6 class="mb-1">@item.Urun.UrunAdi</h6>
+                                                        <small class="text-muted">@item.Urun.Fiyat ₺</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="input-group input-group-sm">
+                                                    <button class="btn btn-outline-primary" type="button" onclick="updateQuantity(@item.UrunId, -1)">-</button>
+                                                    <input type="number" class="form-control text-center" value="@item.Miktar" min="1" onchange="updateQuantity(@item.UrunId, 0, this.value)">
+                                                    <button class="btn btn-outline-primary" type="button" onclick="updateQuantity(@item.UrunId, 1)">+</button>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2 text-end">
+                                                <span class="fw-bold">@(item.Urun.Fiyat * item.Miktar) ₺</span>
+                                            </div>
+                                            <div class="col-md-1 text-end">
+                                                <form action="/Cart/RemoveItem" method="post" class="d-inline">
+                                                    <input type="hidden" name="urunId" value="@item.UrunId">
+                                                    <input type="hidden" name="miktar" value="@item.Miktar">
+                                                    <button type="submit" class="btn btn-sm btn-remove">
+                                                        <i class="fa-solid fa-trash-can"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="card shadow-sm">
+                        <div class="card-header text-white">
+                            <h2 class="h6 mb-0">
+                                <i class="fa-solid fa-receipt me-2"></i>
+                                Sipariş Özeti
+                            </h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="list-group list-group-flush">
+                                <div class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center">
+                                        <i class="fa-solid fa-shopping-bag me-2 text-primary"></i>
+                                        <span>Sipariş Toplamı</span>
+                                    </div>
+                                    <span class="fw-bold" id="orderTotal">@Model.AraToplam() ₺</span>
+                                </div>
+                                <div class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center">
+                                        <i class="fa-solid fa-truck me-2 text-primary"></i>
+                                        <span>Kargo Ücreti</span>
+                                    </div>
+                                    <span class="text-success">Ücretsiz</span>
+                                </div>
+                                <div class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center">
+                                        <i class="fa-solid fa-percent me-2 text-primary"></i>
+                                        <span>Vergi (%20)</span>
+                                    </div>
+                                    <span class="fw-bold" id="taxAmount">@(Model.AraToplam() * 0.2) ₺</span>
+                                </div>
+                                <div class="list-group-item d-flex justify-content-between align-items-center text-white">
+                                    <div class="d-flex align-items-center">
+                                        <i class="fa-solid fa-calculator me-2 text-primary"></i>
+                                        <span class="fw-bold text-dark">Toplam</span>
+                                    </div>
+                                    <span class="fs-5 fw-bold text-dark" id="grandTotal">@Model.Toplam() ₺</span>
+                                </div>
+                            </div>
+                            <div class="d-grid mt-3">
+                                <a asp-controller="Order" asp-action="Checkout" class="btn btn-primary btn-lg">
+                                    <i class="fa-solid fa-check me-2"></i>
+                                    Siparişi Tamamla
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</section>
+
+<style>
+    /* Section Bar */
+    .section-bar {
+        background: linear-gradient(90deg, #1a1a1a, #2a2a2a);
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .breadcrumb {
+        background: transparent;
+        font-size: 1rem;
+    }
+
+    .breadcrumb-item a {
+        color: #ffffff;
+        transition: color 0.3s ease, text-decoration 0.3s ease;
+    }
+
+    .breadcrumb-item a:hover {
+        color: #00aaff;
+        text-decoration: underline;
+    }
+
+    .breadcrumb-item.active {
+        color: #b0b0b0;
+        font-weight: 500;
+    }
+
+    .breadcrumb-item+.breadcrumb-item::before {
+        color: #b0b0b0;
+    }
+
+    .container {
+        max-width: 1200px;
+        padding: 0 1rem;
+    }
+
+    /* Card ve Listeler */
+    .card {
+        border: none;
+        border-radius: 1rem;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+    }
+
+    .card-header {
+        background: linear-gradient(90deg, #00aaff, #0088cc);
+        border-radius: 1rem 1rem 0 0;
+        padding: 1rem 1.5rem;
+        color: #ffffff;
+    }
+
+    .list-group-item {
+        border: none;
+        border-bottom: 1px solid #e9ecef;
+        padding: 1rem 1.5rem;
+        transition: background 0.3s ease;
+    }
+
+    .list-group-item:hover {
+        background: rgba(0, 170, 255, 0.05);
+    }
+
+    .list-group-item:last-child {
+        border-bottom: none;
+    }
+
+    /* Ürün Görselleri */
+    .list-group-item img,
+    .list-group-item .rounded {
+        border-radius: 0.5rem;
+    }
+
+    /* Miktar Input ve Butonlar */
+    .input-group {
+        max-width: 140px;
+        border-radius: 0.5rem;
+        overflow: hidden;
+        margin: 0.5rem 0;
+    }
+
+    .input-group .form-control {
+        border: 1px solid #ced4da;
+        border-radius: 0;
+        text-align: center;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .input-group .form-control:focus {
+        border-color: #00aaff;
+        box-shadow: 0 0 0 0.2rem rgba(0, 170, 255, 0.25);
+    }
+
+    .input-group .btn-outline-primary {
+        border-color: #00aaff;
+        color: #00aaff;
+        transition: all 0.3s ease;
+    }
+
+    .input-group .btn-outline-primary:hover {
+        background: #0088cc;
+        border-color: #0088cc;
+        color: #ffffff;
+    }
+
+    /* Silme Butonu */
+    .btn-remove {
+        background: rgba(176, 176, 176, 0.1);
+        border: none;
+        border-radius: 50%;
+        padding: 0.4rem;
+        min-width: 32px;
+        min-height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+    }
+
+    .btn-remove i {
+        font-size: 0.9rem;
+        color: #b0b0b0;
+        transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .btn-remove:hover {
+        background: rgba(220, 53, 69, 0.2);
+    }
+
+    .btn-remove:hover i {
+        color: #dc3545;
+        transform: scale(1.2);
+    }
+
+    /* Sipariş Özeti */
+    .list-group-item.bg-dark {
+        background: linear-gradient(90deg, #1a1a1a, #2a2a2a);
+        border-radius: 0.5rem;
+        color: #ffffff;
+    }
+
+    .list-group-item .text-primary {
+        color: #00aaff !important;
+    }
+
+    .list-group-item i.text-primary {
+        font-size: 1.2rem;
+    }
+
+    /* Sipariş Tamamla Butonu */
+    .btn-primary {
+        background: #00aaff;
+        border: none;
+        border-radius: 0.75rem;
+        padding: 0.8rem 1.5rem;
+        transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        background: #0088cc;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 136, 204, 0.3);
+    }
+
+    /* Alert */
+    .alert-warning {
+        border-radius: 0.5rem;
+        background: rgba(255, 193, 7, 0.1);
+        border: 1px solid #ffc107;
+        color: #664d03;
+    }
+
+    /* Mobil Görünüm */
+    @@media (max-width: 768px) {
+        .section-bar {
+            padding: 0.75rem;
+            border-radius: 0;
+        }
+
+        .breadcrumb {
+            font-size: 0.9rem;
+        }
+
+        .container {
+            padding: 0 0.75rem;
+        }
+
+        .card {
+            margin: 0 -0.75rem;
+            border-radius: 0;
+        }
+
+        .card-body {
+            padding: 1rem;
+        }
+
+        .list-group-item {
+            padding: 0.75rem 1rem;
+        }
+
+        .list-group-item .row {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .list-group-item .col-md-6,
+        .list-group-item .col-md-3,
+        .list-group-item .col-md-2,
+        .list-group-item .col-md-1 {
+            width: 100%;
+            max-width: 100%;
+            margin-bottom: 0.5rem;
+        }
+
+        .input-group {
+            width: 100%;
+            max-width: 160px;
+            margin: 0.5rem auto;
+        }
+
+        .text-end {
+            text-align: center !important;
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 0.75rem;
+        }
+
+        .btn-remove {
+            padding: 0.3rem;
+            min-width: 28px;
+            min-height: 28px;
+        }
+
+        .list-group-item img,
+        .list-group-item .rounded {
+            width: 60px;
+            height: 60px;
+        }
+    }
+
+    @@media (max-width: 575.98px) {
+        .breadcrumb-item {
+            font-size: 0.9rem;
+        }
+
+        .card-header {
+            padding: 0.75rem 1rem;
+        }
+
+        .list-group-item {
+            padding: 0.5rem 0.75rem;
+        }
+
+        .input-group .form-control {
+            font-size: 0.9rem;
+        }
+
+        .btn-primary {
+            font-size: 0.9rem;
+        }
+    }
+</style>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function updateQuantity(urunId, change, newValue = null) {
+            let input = event.target.closest('.input-group').querySelector('input');
+            let currentValue = parseInt(input.value);
+            let newQuantity = newValue ? parseInt(newValue) : currentValue + change;
+            
+            if (newQuantity < 1) newQuantity = 1;
+            
+            $.ajax({
+                url: '/Cart/UpdateQuantity',
+                type: 'POST',
+                data: {
+                    urunId: urunId,
+                    miktar: newQuantity
+                },
+                success: function(response) {
+                    input.value = newQuantity;
+                    updateTotalPrice(urunId, newQuantity);
+                    updateOrderSummary();
+                },
+                error: function() {
+                    input.value = currentValue;
+                    alert('Bir hata oluştu. Lütfen tekrar deneyin.');
+                }
+            });
+        }
+
+        function updateTotalPrice(urunId, newQuantity) {
+            let itemRow = $(`input[value="${urunId}"]`).closest('.list-group-item');
+            let unitPrice = parseFloat(itemRow.find('.text-muted').text().replace('₺', '').trim());
+            let totalPrice = unitPrice * newQuantity;
+            itemRow.find('.col-md-2.text-end .fw-bold').text(totalPrice.toFixed(2) + ' ₺');
+        }
+
+        function updateOrderSummary() {
+            let total = 0;
+            $('.list-group-item').each(function() {
+                if ($(this).find('input[type="number"]').length > 0) {
+                    let price = parseFloat($(this).find('.col-md-2.text-end .fw-bold').text().replace('₺', '').trim());
+                    total += price;
+                }
+            });
+
+            let tax = total * 0.2;
+            $('#orderTotal').text(total.toFixed(2) + ' ₺');
+            $('#taxAmount').text(tax.toFixed(2) + ' ₺');
+            $('#grandTotal').text((total + tax).toFixed(2) + ' ₺');
+        }
+
+        $(document).ready(function() {
+            updateOrderSummary();
+        });
+    </script>
+}

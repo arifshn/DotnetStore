@@ -1,0 +1,122 @@
+@model dotnet_store.Models.Slider
+
+@{
+    Layout = "_AdminLayout";
+}
+
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4">
+                <div class="card border-0 shadow-sm rounded-4">
+                    <div class="card-body text-center p-4 p-md-5">
+                        <h5 class="card-title mb-4 text-primary">
+                            <i class="fa-solid fa-trash me-2"></i>Slider Silme
+                        </h5>
+                        @if (!string.IsNullOrEmpty(Model?.Resim))
+                        {
+                            <img src="/img/@Model.Resim" class="img-fluid rounded mb-4" alt="Slider Resmi"
+                                style="max-height: 150px;" />
+                        }
+                        <p class="mb-4">
+                            <strong>@Model?.Baslik</strong> isimli slideri silmek istediğinizden emin misiniz? Bu işlem
+                            geri alınamaz.
+                        </p>
+                        <form asp-controller="Slider" asp-action="DeleteConfirm" method="post">
+                            <input type="hidden" name="id" value="@Model?.Id" />
+                            <div class="d-flex justify-content-center gap-3">
+                                <button type="submit" class="btn btn-danger rounded-3 px-4">
+                                    <i class="fa-solid fa-trash me-2"></i>Sil
+                                </button>
+                                <a asp-controller="Slider" asp-action="Index"
+                                    class="btn btn-outline-primary rounded-3 px-4">
+                                    <i class="fa-solid fa-times-circle me-2"></i>İptal
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Container */
+    .container {
+        max-width: 1200px;
+        padding: 0 1rem;
+    }
+
+    /* Card */
+    .card {
+        border: none;
+        border-radius: 1rem;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+    }
+
+    .card-body {
+        padding: 1.5rem;
+    }
+
+    /* Text */
+    .text-primary {
+        color: #00aaff !important;
+    }
+
+    /* Buttons */
+    .btn-danger {
+        background: #dc3545;
+        border: none;
+        border-radius: 0.75rem;
+        transition: all 0.3s ease;
+    }
+
+    .btn-danger:hover {
+        background: #c82333;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(200, 35, 51, 0.3);
+    }
+
+    .btn-outline-primary {
+        border-color: #00aaff;
+        color: #00aaff;
+        border-radius: 0.75rem;
+        transition: all 0.3s ease;
+    }
+
+    .btn-outline-primary:hover {
+        background: #00aaff;
+        color: #ffffff;
+        transform: translateY(-2px);
+    }
+
+    /* Mobile View */
+    @@media (max-width: 768px) {
+        .container {
+            padding: 0 0.75rem;
+        }
+
+        .card {
+            margin: 0 -0.75rem;
+            border-radius: 0;
+        }
+
+        .card-body {
+            padding: 1rem;
+        }
+
+        .btn {
+            font-size: 0.9rem;
+        }
+
+        .img-fluid {
+            max-height: 120px;
+        }
+    }
+</style>

@@ -1,0 +1,132 @@
+<footer class="footer text-white py-5" style="background: linear-gradient(180deg, #1a1a1a 0%, #2c2c2c 100%);">
+    <div class="container">
+        <div class="row align-items-center">
+            <!-- Logo veya Marka Adı -->
+            <div class="col-md-4 text-center text-md-start mb-4 mb-md-0">
+                <h3 class="mb-0" style="font-weight: bold; color: #ffffff;">Calmora</h3>
+                <p class="mt-1 text-muted" style="color: #b0b0b0 !important; font-size: 0.9rem;">En yeni elektronik
+                    ürünler burada!</p>
+            </div>
+            <!-- Sosyal Medya İkonları -->
+            <div class="col-md-4 text-center mb-4 mb-md-0">
+                <div class="social-icons d-flex justify-content-center gap-3">
+                    <a href="https://facebook.com/calmora"
+                        class="rounded-circle d-flex align-items-center justify-content-center text-white"
+                        style="width: 45px; height: 45px; background: #00aaff; transition: all 0.3s ease;">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://x.com/calmora"
+                        class="rounded-circle d-flex align-items-center justify-content-center text-white"
+                        style="width: 45px; height: 45px; background: #00aaff; transition: all 0.3s ease;">
+                        <i class="fab fa-x-twitter"></i>
+                    </a>
+                    <a href="https://instagram.com/calmora"
+                        class="rounded-circle d-flex align-items-center justify-content-center text-white"
+                        style="width: 45px; height: 45px; background: #00aaff; transition: all 0.3s ease;">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://linkedin.com/company/calmora"
+                        class="rounded-circle d-flex align-items-center justify-content-center text-white"
+                        style="width: 45px; height: 45px; background: #00aaff; transition: all 0.3s ease;">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+            </div>
+            <!-- İletişim veya Ekstra Linkler -->
+            <div class="col-md-4 text-center text-md-end">
+                <ul class="list-unstyled mb-0">
+                    <li><a href="/hakkimizda" class="text-muted"
+                            style="color: #b0b0b0 !important; text-decoration: none;">Hakkımızda</a></li>
+                    <li><a href="/iletisim" class="text-muted"
+                            style="color: #b0b0b0 !important; text-decoration: none;">İletişim</a></li>
+                    <li><a href="/sss" class="text-muted"
+                            style="color: #b0b0b0 !important; text-decoration: none;">SSS</a></li>
+                </ul>
+            </div>
+        </div>
+        <hr style="border-color: #b0b0b0; opacity: 0.3;">
+        <div class="row">
+            <div class="col-12 text-center">
+                <p class="mb-0" style="color: #b0b0b0; font-size: 0.95rem;">© 2025 Calmora. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            // Sosyal medya ikonlarına hover efekti
+            $('.social-icons a').hover(
+                function () {
+                    $(this).css({
+                        'background': '#0088cc',
+                        'transform': 'scale(1.15)',
+                        'box-shadow': '0 6px 12px rgba(0, 0, 0, 0.3)'
+                    });
+                },
+                function () {
+                    $(this).css({
+                        'background': '#00aaff',
+                        'transform': 'scale(1)',
+                        'box-shadow': 'none'
+                    });
+                }
+            );
+        });
+    </script>
+}
+
+<style>
+    .footer {
+        box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.2);
+        margin-top: auto;
+    }
+
+    .social-icons a {
+        font-size: 1.3rem;
+        transition: all 0.3s ease;
+    }
+
+    .social-icons a:hover {
+        background: #0088cc;
+        transform: scale(1.15);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .footer p,
+    .footer a {
+        transition: color 0.3s ease;
+    }
+
+    .footer a:hover {
+        color: #00aaff !important;
+        text-decoration: underline !important;
+    }
+
+    /* Mobil Görünüm */
+    @@media (max-width: 768px) {
+        .footer {
+            padding: 2.5rem 0;
+        }
+
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            font-size: 1.1rem;
+        }
+
+        .social-icons {
+            gap: 1.5rem;
+        }
+
+        .footer p,
+        .footer a {
+            font-size: 0.85rem;
+        }
+
+        .footer h3 {
+            font-size: 1.5rem;
+        }
+    }
+</style>

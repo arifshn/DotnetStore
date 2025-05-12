@@ -1,0 +1,24 @@
+@{
+    ViewData["Title"] = "Erişim Engellendi";
+    var errorMessage = ViewData["ErrorMessage"]?.ToString() ?? "Bu işlem için yetkiniz yok.";
+    var returnUrl = ViewData["ReturnUrl"]?.ToString();
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-body text-center">
+                    <h1 class="card-title text-danger">Erişim Engellendi</h1>
+                    <p class="card-text">@errorMessage</p>
+                    @if (!string.IsNullOrEmpty(returnUrl))
+                    {
+                        <p class="card-text">İstenen sayfa: <code>@returnUrl</code></p>
+                    }
+                    <a asp-action="Login" asp-controller="Account" class="btn btn-primary mt-3">Giriş Yap</a>
+                    <a asp-action="Index" asp-controller="Home" class="btn btn-secondary mt-3">Ana Sayfaya Dön</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

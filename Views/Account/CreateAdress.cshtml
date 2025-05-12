@@ -1,0 +1,33 @@
+@using dotnet_store.Models
+@model dotnet_store.Models.Address
+
+<h2>Adres Ekle</h2>
+
+<form asp-action="Create" method="post">
+    <div class="mb-3">
+        <label for="AdresAd" class="form-label">Adres Adı</label>
+        <input type="text" class="form-control" id="AdresAd" name="AdresAd" required />
+    </div>
+
+    <div class="mb-3">
+        <label for="AdresSatiri" class="form-label">Adres Satırı</label>
+        <input type="text" class="form-control" id="AdresSatiri" name="AdresSatiri" required />
+    </div>
+
+    <div class="mb-3">
+        <label for="Sehir" class="form-label">Şehir</label>
+        <input type="text" class="form-control" id="Sehir" name="Sehir" required />
+    </div>
+
+    <div class="mb-3">
+        <label for="PostaKodu" class="form-label">Posta Kodu</label>
+        <input type="text" class="form-control" id="PostaKodu" name="PostaKodu" required />
+    </div>
+
+    <div class="mb-3">
+        <label for="Country" class="form-label">Ülke</label>
+        <input type="text" class="form-control" id="Country" name="Country" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+</form>

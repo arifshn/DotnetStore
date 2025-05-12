@@ -1,0 +1,280 @@
+@model AccountLoginModel
+
+@section Bar {
+    <section class="section-bar p-3">
+        <div class="container">
+            <nav>
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item">
+                        <a href="/" class="text-white text-decoration-none">Anasayfa</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Kullanıcı Girişi</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+}
+
+<section class="bg-light py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-5">
+                <div class="card border-0 shadow-sm rounded-3">
+                    <div class="card-header border-0 py-4 text-center">
+                        <h4 class="card-title mb-0 fw-bold text-dark">
+                            <i class="fas fa-user-circle me-2 text-primary"></i>Giriş Yap
+                        </h4>
+                    </div>
+                    <div class="card-body p-4">
+                        <form method="post" id="loginForm">
+                            @Html.AntiForgeryToken()
+                            <div asp-validation-summary="All" class="alert alert-danger rounded-3 mb-4 d-none"></div>
+
+                            <div class="form-floating mb-4">
+                                <input asp-for="Email" class="form-control rounded-3" id="emailInput"
+                                    placeholder="E-posta adresinizi giriniz" />
+                                <label for="emailInput" class="text-dark"><i
+                                        class="fas fa-envelope me-2 text-primary"></i>E-posta</label>
+                                <span asp-validation-for="Email" class="text-danger small"></span>
+                            </div>
+
+                            <div class="form-floating mb-4">
+                                <input asp-for="Password" class="form-control rounded-3" id="passwordInput"
+                                    placeholder="Şifrenizi giriniz" />
+                                <label for="passwordInput" class="text-dark"><i
+                                        class="fas fa-lock me-2 text-primary"></i>Şifre</label>
+                                <span asp-validation-for="Password" class="text-danger small"></span>
+                            </div>
+
+                            <div class="form-check mb-4">
+                                <input asp-for="BeniHatirla" class="form-check-input" id="rememberMe" />
+                                <label for="rememberMe" class="form-check-label text-dark">Beni Hatırla</label>
+                                <span asp-validation-for="BeniHatirla" class="text-danger small"></span>
+                            </div>
+
+                            <div class="d-grid gap-2">
+                                <button type="submit"
+                                    class="btn btn-primary btn-md rounded-3 d-flex justify-content-center align-items-center">
+                                    <i class="fas fa-sign-in-alt me-2"></i>Giriş Yap
+                                    <span class="spinner-border spinner-border-sm ms-2 d-none" role="status"
+                                        aria-hidden="true"></span>
+                                </button>
+
+                                <a asp-controller="Account" asp-action="ForgotPassword"
+                                    class="btn btn-outline-primary btn-md rounded-3 d-flex justify-content-center align-items-center">
+                                    <i class="fas fa-key me-2"></i>Şifremi Unuttum
+                                </a>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            // Form submit sırasında spinner
+            $('#loginForm').on('submit', function () {
+                $('#loginForm button[type="submit"] .spinner-border').removeClass('d-none');
+                $('#loginForm button[type="submit"]').prop('disabled', true);
+                setTimeout(function () {
+                    $('#loginForm button[type="submit"] .spinner-border').addClass('d-none');
+                    $('#loginForm button[type="submit"]').prop('disabled', false);
+                }, 2000);
+            });
+
+            // Kart hover efekti
+            $('.card').hover(
+                function () {
+                    $(this).addClass('shadow').css('transform', 'translateY(-5px)');
+                },
+                function () {
+                    $(this).removeClass('shadow').css('transform', 'translateY(0)');
+                }
+            );
+
+            // İstemci tarafı validasyon
+            $.validator.setDefaults({
+                errorElement: 'span',
+                errorClass: 'text-danger small',
+                highlight: function (element) {
+                    $(element).addClass('is-invalid');
+                },
+                unhighlight: function (element) {
+                    $(element).removeClass('is-invalid');
+                }
+            });
+        });
+    </script>
+}
+
+<style>
+    .card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15) !important;
+    }
+
+    .card-header {
+        background: #fff;
+        border-bottom: none;
+    }
+
+    .form-floating>.form-control {
+        padding-right: 1rem;
+    }
+
+    .form-floating>.form-control:focus,
+    .form-floating>.form-control:not(:placeholder-shown) {
+        padding-top: 1.625rem;
+        padding-bottom: 0.625rem;
+    }
+
+    .form-floating>.form-control:focus~label,
+    .form-floating>.form-control:not(:placeholder-shown)~label {
+        opacity: 0.65;
+        transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
+        color: #495057;
+    }
+
+    .form-control {
+        border: 1px solid #ced4da;
+        transition: border-color 0.3s ease;
+    }
+
+    .form-control:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+
+    .btn-primary {
+        padding: 0.75rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-outline-primary {
+        padding: 0.75rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .btn-outline-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .alert {
+        border: none;
+    }
+
+    .breadcrumb-item a {
+        color: #007bff;
+    }
+
+    .breadcrumb-item.active {
+        color: #495057;
+    }
+
+
+    @@media (max-width: 768px) {
+        .bg-light {
+            padding: 2rem 0;
+        }
+
+        .card {
+            margin: 0;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+        }
+
+        .form-floating>.form-control {
+            height: 48px;
+            font-size: 0.9rem;
+        }
+
+        .form-floating>label {
+            font-size: 0.9rem;
+        }
+
+        .btn {
+            font-size: 0.9rem;
+            padding: 0.5rem;
+        }
+
+        .breadcrumb {
+            font-size: 0.85rem;
+        }
+
+        .bg-white {
+            padding: 0.75rem 0;
+        }
+    }
+
+    .section-bar {
+        background: linear-gradient(90deg, #1a1a1a, #2a2a2a);
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .breadcrumb {
+        background: transparent;
+        font-size: 1rem;
+    }
+
+    .breadcrumb-item a {
+        color: #ffffff;
+        transition: color 0.3s ease;
+    }
+
+    .breadcrumb-item a:hover {
+        color: #00aaff;
+    }
+
+    .breadcrumb-item.active {
+        color: #b0b0b0;
+    }
+
+    .breadcrumb-item+.breadcrumb-item::before {
+        color: #b0b0b0;
+    }
+
+    .container {
+        max-width: 1200px;
+        padding: 0 1rem;
+    }
+
+
+    @@media (max-width: 768px) {
+        .section-bar {
+            padding: 0.75rem;
+            border-radius: 0;
+        }
+
+        .breadcrumb {
+            font-size: 0.9rem;
+        }
+
+        .container {
+            padding: 0 0.75rem;
+        }
+    }
+</style>

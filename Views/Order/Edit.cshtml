@@ -1,0 +1,161 @@
+@model dotnet_store.Models.Order
+
+@{
+    Layout = "_AdminLayout";
+}
+
+<section class="py-5">
+    <div class="container">
+        <div class="card border-0 shadow-sm rounded-4">
+            <div class="card-header bg-white border-0 py-4">
+                <h5 class="card-title mb-0 text-primary">
+                    <i class="fa-solid fa-pen-to-square me-2"></i>Sipariş Durumunu Güncelle
+                </h5>
+            </div>
+            <div class="card-body p-4 p-md-5">
+                <div asp-validation-summary="All" class="text-danger mb-4"></div>
+                <form asp-action="Edit" method="post">
+                    <input type="hidden" asp-for="Id" />
+                    <div class="mb-4">
+                        <label asp-for="Durum" class="form-label fw-bold text-primary">Sipariş Durumu</label>
+                        <select asp-for="Durum" asp-items="Html.GetEnumSelectList<dotnet_store.Models.SiparisDurumu>()"
+                            class="form-select rounded-3">
+                            <option disabled selected>Durum Seçiniz</option>
+                        </select>
+                        <span asp-validation-for="Durum" class="text-danger"></span>
+                    </div>
+                    <div class="mb-4">
+                        <label asp-for="KargoTakipNo" class="form-label fw-bold text-primary">Kargo Takip
+                            Numarası</label>
+                        <input asp-for="KargoTakipNo" class="form-control rounded-3" placeholder="Örn: ABC123456TR" />
+                        <span asp-validation-for="KargoTakipNo" class="text-danger"></span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <a asp-action="Index" class="btn btn-outline-primary rounded-3 px-4">
+                            <i class="fa-solid fa-arrow-left me-2"></i>Geri Dön
+                        </a>
+                        <button type="submit" class="btn btn-primary rounded-3 px-4">
+                            <i class="fa-solid fa-save me-2"></i>Güncelle
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}
+
+<style>
+    /* Container */
+    .container {
+        max-width: 1200px;
+        padding: 0 1rem;
+    }
+
+    /* Card */
+    .card {
+        border: none;
+        border-radius: 1rem;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+    }
+
+    .card-header {
+        background: #ffffff;
+        border-radius: 1rem 1rem 0 0;
+    }
+
+    .card-body {
+        padding: 1.5rem;
+    }
+
+    /* Text */
+    .text-primary {
+        color: #00aaff !important;
+    }
+
+    .text-danger {
+        font-size: 0.875rem;
+    }
+
+    /* Form Elements */
+    .form-control,
+    .form-select {
+        border-radius: 0.5rem;
+        border: 1px solid #ced4da;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+        border-color: #00aaff;
+        box-shadow: 0 0 0 0.2rem rgba(0, 170, 255, 0.25);
+    }
+
+    .form-label {
+        font-weight: 600;
+    }
+
+    /* Buttons */
+    .btn-primary {
+        background: #00aaff;
+        border: none;
+        border-radius: 0.75rem;
+        transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        background: #0088cc;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 136, 204, 0.3);
+    }
+
+    .btn-outline-primary {
+        border-color: #00aaff;
+        color: #00aaff;
+        border-radius: 0.75rem;
+        transition: all 0.3s ease;
+    }
+
+    .btn-outline-primary:hover {
+        background: #00aaff;
+        color: #ffffff;
+        transform: translateY(-2px);
+    }
+
+    /* Mobile View */
+    @@media (max-width: 768px) {
+        .container {
+            padding: 0 0.75rem;
+        }
+
+        .card {
+            margin: 0 -0.75rem;
+            border-radius: 0;
+        }
+
+        .card-body {
+            padding: 1rem;
+        }
+
+        .form-control,
+        .form-select {
+            font-size: 0.9rem;
+        }
+
+        .form-label {
+            font-size: 0.9rem;
+        }
+
+        .btn {
+            font-size: 0.9rem;
+        }
+    }
+</style>

@@ -1,0 +1,226 @@
+@model List<dotnet_store.Models.Order>
+
+@{
+    Layout = "_AdminLayout";
+}
+
+<section class="py-5">
+    <div class="container">
+        <div class="card border-0 shadow-sm rounded-4">
+            <div class="card-header bg-white border-0 py-4">
+                <h5 class="card-title mb-0 text-primary">
+                    <i class="fa-solid fa-list me-2"></i>Siparişler
+                </h5>
+            </div>
+            <div class="card-body p-4 p-md-5">
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fa-solid fa-search"></i></span>
+                            <input type="text" id="searchInput" class="form-control"
+                                placeholder="Sipariş ID veya Kullanıcı Adı Ara">
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table id="orderTable" class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Sipariş Id</th>
+                                <th>Kullanıcı Adı</th>
+                                <th>Toplam</th>
+                                <th>Tarih</th>
+                                <th>Durum</th>
+                                <th style="width: 150px;">İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null)
+                            {
+                                foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.Id</td>
+                                        <td>@item.Username</td>
+                                        <td>@item.ToplamFiyat.ToString("C")</td>
+                                        <td>@item.SiparisTarihi.ToString("dd.MM.yyyy HH:mm")</td>
+                                        <td>
+                                            <span class="badge bg-success">@item.Durum</span>
+                                        </td>
+                                        <td>
+                                            <a asp-controller="Order" asp-action="Details" asp-route-id="@item.Id"
+                                                class="btn btn-primary btn-sm me-1">
+                                                <i class="fa-solid fa-right-long"></i> Detay
+                                            </a>
+                                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm">
+                                                <i class="fa-solid fa-pen-to-square"></i> Düzenle
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" />
+    <script>
+        $(document).ready(function () {
+            $('#orderTable').DataTable({
+                language: {
+                    url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/tr.json'
+                },
+                pageLength: 10,
+                order: [[0, 'desc']],
+                columnDefs: [
+                    { orderable: false, targets: 5 } // İşlemler sıralanamaz
+                ]
+            });
+
+            $('#searchInput').on('keyup', function () {
+                $('#orderTable').DataTable().search(this.value).draw();
+            });
+        });
+    </script>
+}
+
+<style>
+    /* Container */
+    .container {
+        max-width: 1200px;
+        padding: 0 1rem;
+    }
+
+    /* Card */
+    .card {
+        border: none;
+        border-radius: 1rem;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+    }
+
+    .card-header {
+        background: #ffffff;
+        border-radius: 1rem 1rem 0 0;
+    }
+
+    .card-body {
+        padding: 1.5rem;
+    }
+
+    /* Text */
+    .text-primary {
+        color: #00aaff !important;
+    }
+
+    /* Table */
+    .table {
+        border-collapse: separate;
+        border-spacing: 0 0.5rem;
+    }
+
+    .table th {
+        background: #f8f9fa;
+        color: #1a1a1a;
+        font-weight: 600;
+    }
+
+    .table td {
+        vertical-align: middle;
+        background: #ffffff;
+        border: none;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .table-hover tbody tr:hover {
+        background: rgba(0, 170, 255, 0.05);
+    }
+
+    /* Form Elements */
+    .form-control {
+        border-radius: 0.5rem;
+        border: 1px solid #ced4da;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .form-control:focus {
+        border-color: #00aaff;
+        box-shadow: 0 0 0 0.2rem rgba(0, 170, 255, 0.25);
+    }
+
+    .input-group-text {
+        background: #f8f9fa;
+        border-radius: 0.5rem 0 0 0.5rem;
+    }
+
+    /* Buttons */
+    .btn-primary {
+        background: #00aaff;
+        border: none;
+        border-radius: 0.75rem;
+        transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        background: #0088cc;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 136, 204, 0.3);
+    }
+
+    .btn-warning {
+        background: #ffc107;
+        border: none;
+        border-radius: 0.75rem;
+    }
+
+    .btn-warning:hover {
+        background: #e0a800;
+        transform: translateY(-2px);
+    }
+
+    .btn-sm {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.875rem;
+    }
+
+    /* Badges */
+    .badge.bg-success {
+        background: #28a745;
+    }
+
+    /* Mobile View */
+    @@media (max-width: 768px) {
+        .container {
+            padding: 0 0.75rem;
+        }
+
+        .card {
+            margin: 0 -0.75rem;
+            border-radius: 0;
+        }
+
+        .card-body {
+            padding: 1rem;
+        }
+
+        .table-responsive {
+            font-size: 0.9rem;
+        }
+
+        .btn-sm {
+            font-size: 0.8rem;
+            padding: 0.4rem 0.6rem;
+        }
+    }
+</style>

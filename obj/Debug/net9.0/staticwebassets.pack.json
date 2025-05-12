@@ -1,0 +1,501 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\css\\admin.css",
+      "PackagePath": "staticwebassets\\css\\admin.css"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\css\\navbar.css",
+      "PackagePath": "staticwebassets\\css\\navbar.css"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\img\\0ododvq0.sjs.jpg",
+      "PackagePath": "staticwebassets\\img\\0ododvq0.sjs.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\img\\1-big.jpeg",
+      "PackagePath": "staticwebassets\\img\\1-big.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\img\\1.jpeg",
+      "PackagePath": "staticwebassets\\img\\1.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\img\\1tv1qoo1.tf5jpg",
+      "PackagePath": "staticwebassets\\img\\1tv1qoo1.tf5jpg"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\img\\2-big.jpeg",
+      "PackagePath": "staticwebassets\\img\\2-big.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\img\\2.jpeg",
+      "PackagePath": "staticwebassets\\img\\2.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\img\\24hi5a5p.5xw.jpg",
+      "PackagePath": "staticwebassets\\img\\24hi5a5p.5xw.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\img\\2at1od0j.jxo.jpg",
+      "PackagePath": "staticwebassets\\img\\2at1od0j.jxo.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\img\\2buutw2d.i1f.jpg",
+      "PackagePath": "staticwebassets\\img\\2buutw2d.i1f.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\img\\2lps1ikk.dst.jpg",
+      "PackagePath": "staticwebassets\\img\\2lps1ikk.dst.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\img\\3-big.jpeg",
+      "PackagePath": "staticwebassets\\img\\3-big.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\img\\3.jpeg",
+      "PackagePath": "staticwebassets\\img\\3.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\img\\4-big.jpeg",
+      "PackagePath": "staticwebassets\\img\\4-big.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\img\\4.jpeg",
+      "PackagePath": "staticwebassets\\img\\4.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\img\\45vtcexy.funjpg",
+      "PackagePath": "staticwebassets\\img\\45vtcexy.funjpg"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\img\\4djohtam.0gc.jpg",
+      "PackagePath": "staticwebassets\\img\\4djohtam.0gc.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\img\\5-big.jpeg",
+      "PackagePath": "staticwebassets\\img\\5-big.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\img\\5.jpeg",
+      "PackagePath": "staticwebassets\\img\\5.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\img\\6-big.jpeg",
+      "PackagePath": "staticwebassets\\img\\6-big.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\img\\6.jpeg",
+      "PackagePath": "staticwebassets\\img\\6.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\img\\7-big.jpeg",
+      "PackagePath": "staticwebassets\\img\\7-big.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\img\\7.jpeg",
+      "PackagePath": "staticwebassets\\img\\7.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\img\\8-big.jpeg",
+      "PackagePath": "staticwebassets\\img\\8-big.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\img\\8.jpeg",
+      "PackagePath": "staticwebassets\\img\\8.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\img\\bjn54djg.0eh.jpg",
+      "PackagePath": "staticwebassets\\img\\bjn54djg.0eh.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\img\\br005j0f.kukjpg",
+      "PackagePath": "staticwebassets\\img\\br005j0f.kukjpg"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\img\\buj1ydhz.05xjpeg",
+      "PackagePath": "staticwebassets\\img\\buj1ydhz.05xjpeg"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\img\\cjff3klk.01r.jpg",
+      "PackagePath": "staticwebassets\\img\\cjff3klk.01r.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\img\\cne51ueg.qahjpg",
+      "PackagePath": "staticwebassets\\img\\cne51ueg.qahjpg"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\img\\cp14w42t.utdjpg",
+      "PackagePath": "staticwebassets\\img\\cp14w42t.utdjpg"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\img\\e10aj5hi.z0w.jpg",
+      "PackagePath": "staticwebassets\\img\\e10aj5hi.z0w.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\img\\edhf4oo2.rog.jpg",
+      "PackagePath": "staticwebassets\\img\\edhf4oo2.rog.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\img\\fgryfd3q.xjs.jpg",
+      "PackagePath": "staticwebassets\\img\\fgryfd3q.xjs.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\img\\g43l2jli.c1fjpg",
+      "PackagePath": "staticwebassets\\img\\g43l2jli.c1fjpg"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\img\\h1sm5y3q.3ttjpg",
+      "PackagePath": "staticwebassets\\img\\h1sm5y3q.3ttjpg"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\img\\harmkgy1.ph5.jpg",
+      "PackagePath": "staticwebassets\\img\\harmkgy1.ph5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\img\\iw4bahrk.pdz.jpg",
+      "PackagePath": "staticwebassets\\img\\iw4bahrk.pdz.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\img\\jgfrvti3.fwq.jpg",
+      "PackagePath": "staticwebassets\\img\\jgfrvti3.fwq.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\img\\jltdq0pz.nh1jpg",
+      "PackagePath": "staticwebassets\\img\\jltdq0pz.nh1jpg"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\img\\lkkj5boi.qmt.jpg",
+      "PackagePath": "staticwebassets\\img\\lkkj5boi.qmt.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\img\\logo.svg",
+      "PackagePath": "staticwebassets\\img\\logo.svg"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\img\\nnnolagx.wav.jpg",
+      "PackagePath": "staticwebassets\\img\\nnnolagx.wav.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\img\\oeoud1cf.r3zjpg",
+      "PackagePath": "staticwebassets\\img\\oeoud1cf.r3zjpg"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\img\\rf5xtykm.vp4.jpg",
+      "PackagePath": "staticwebassets\\img\\rf5xtykm.vp4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\img\\rwfgdp4g.p3s.jpg",
+      "PackagePath": "staticwebassets\\img\\rwfgdp4g.p3s.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\img\\sbdkvlue.kw3.jpg",
+      "PackagePath": "staticwebassets\\img\\sbdkvlue.kw3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\img\\slider-1.jpeg",
+      "PackagePath": "staticwebassets\\img\\slider-1.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\img\\slider-2.jpeg",
+      "PackagePath": "staticwebassets\\img\\slider-2.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\img\\slider-3.jpeg",
+      "PackagePath": "staticwebassets\\img\\slider-3.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\img\\v1cneof1.vgm.jpg",
+      "PackagePath": "staticwebassets\\img\\v1cneof1.vgm.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\img\\wcqdbgxu.kmj.jpg",
+      "PackagePath": "staticwebassets\\img\\wcqdbgxu.kmj.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\img\\xaentrxo.pud.jpg",
+      "PackagePath": "staticwebassets\\img\\xaentrxo.pud.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\img\\zfgqdmed.fgd.jpg",
+      "PackagePath": "staticwebassets\\img\\zfgqdmed.fgd.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\js\\fslightbox.js",
+      "PackagePath": "staticwebassets\\js\\fslightbox.js"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\jquery\\dist\\jquery.slim.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.slim.js"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\jquery\\dist\\jquery.slim.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.slim.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Arif\\Desktop\\dotnet-store\\wwwroot\\lib\\jquery\\dist\\jquery.slim.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.slim.min.map"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.build.dotnet-store.props",
+      "PackagePath": "build\\dotnet-store.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.buildMultiTargeting.dotnet-store.props",
+      "PackagePath": "buildMultiTargeting\\dotnet-store.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.buildTransitive.dotnet-store.props",
+      "PackagePath": "buildTransitive\\dotnet-store.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.dotnet-store.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.dotnet-store.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

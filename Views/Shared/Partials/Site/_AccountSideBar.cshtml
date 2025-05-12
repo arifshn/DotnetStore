@@ -1,0 +1,91 @@
+<div class="list-group mb-3">
+    <a asp-controller="Account" asp-action="EditUser"
+        class="list-group-item list-group-item-action d-flex align-items-center rounded-3">
+        <i class="fas fa-user me-2 text-primary"></i> Kullanıcı Bilgileri
+    </a>
+    <a asp-controller="Address" asp-action="Index"
+        class="list-group-item list-group-item-action d-flex align-items-center rounded-3">
+        <i class="fas fa-map-marker-alt me-2 text-primary"></i> Adres Bilgileri
+    </a>
+    <a asp-controller="Order" asp-action="OrderList"
+        class="list-group-item list-group-item-action d-flex align-items-center rounded-3">
+        <i class="fas fa-shopping-bag me-2 text-primary"></i> Siparişler
+    </a>
+    <a asp-controller="Account" asp-action="ChangePassword"
+        class="list-group-item list-group-item-action d-flex align-items-center rounded-3">
+        <i class="fas fa-key me-2 text-primary"></i> Parola Değiştir
+    </a>
+    <a asp-controller="Favorites" asp-action="Index"
+        class="list-group-item list-group-item-action d-flex align-items-center rounded-3">
+        <i class="fas fa-heart me-2 text-primary"></i> Favorilerim
+    </a>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            // Aktif sayfaya 'active' sınıfı ekle
+            var currentUrl = window.location.pathname;
+            $('.list-group-item').each(function () {
+                var linkUrl = $(this).attr('href');
+                if (currentUrl === linkUrl) {
+                    $(this).addClass('active');
+                }
+            });
+        });
+    </script>
+}
+
+<style>
+    .list-group-item {
+        background: #fff;
+        border: 1px solid #e9ecef;
+        border-radius: 0.75rem !important;
+        margin-bottom: 0.5rem;
+        padding: 1rem 1.25rem;
+        transition: all 0.3s ease;
+        font-weight: 500;
+        color: #495057;
+    }
+
+    .list-group-item:hover {
+        background: #f8f9fa;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .list-group-item.active {
+        background: #007bff;
+        color: #fff;
+        border-color: #007bff;
+    }
+
+    .list-group-item.active i {
+        color: #fff !important;
+    }
+
+    .list-group-item i {
+        color: #007bff;
+        transition: color 0.3s ease;
+    }
+
+    .list-group-item:hover i {
+        color: #0056b3;
+    }
+
+    /* Mobil Görünüm */
+    @@media (max-width: 768px) {
+        .list-group-item {
+            padding: 0.75rem 1rem;
+            font-size: 0.9rem;
+        }
+
+        .list-group-item i {
+            font-size: 1rem;
+        }
+
+        .list-group {
+            margin-bottom: 1rem;
+        }
+    }
+</style>

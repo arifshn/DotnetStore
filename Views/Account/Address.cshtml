@@ -1,0 +1,27 @@
+@model IEnumerable<dotnet_store.Models.Address>
+
+<h2>Adresler</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Adres Adı</th>
+            <th>Adres Satırı</th>
+            <th>Şehir</th>
+            <th>Posta Kodu</th>
+            <th>Ülke</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var address in Model)
+        {
+            <tr>
+                <td>@address.AdresAd</td>
+                <td>@address.AdresSatiri</td>
+                <td>@address.Sehir</td>
+                <td>@address.PostaKodu</td>
+                <td>@address.Country</td>
+            </tr>
+        }
+    </tbody>
+</table>

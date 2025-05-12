@@ -1,0 +1,165 @@
+@model string
+
+@section Bar {
+    <section class="section-bar p-3">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item">
+                        <a asp-controller="Home" asp-action="Index" class="text-white text-decoration-none">Anasayfa</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Siparişiniz Tamamlandı</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+}
+
+<section class="py-5">
+    <div class="container">
+        <div class="card border-0 shadow-sm rounded-4 text-center">
+            <div class="card-body p-4 p-md-5">
+                <h1 class="h3 mb-3 text-primary">
+                    <i class="fa-solid fa-check-circle me-2"></i>Teşekkür Ederiz
+                </h1>
+                <p class="lead mb-4">
+                    Siparişiniz (#@Model) başarıyla tamamlandı.
+                </p>
+                <p>
+                    Sipariş detaylarınızı görüntülemek için aşağıdaki butona tıklayabilirsiniz.
+                </p>
+                <p>
+                    <a asp-controller="Order" asp-action="OrderList" class="btn btn-primary btn-lg rounded-3 px-4">
+                        <i class="fa-solid fa-list me-2"></i>Siparişleri Görüntüle
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Section Bar */
+    .section-bar {
+        background: linear-gradient(90deg, #1a1a1a, #2a2a2a);
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .breadcrumb {
+        background: transparent;
+        font-size: 1rem;
+    }
+
+    .breadcrumb-item a {
+        color: #ffffff;
+        transition: color 0.3s ease, text-decoration 0.3s ease;
+    }
+
+    .breadcrumb-item a:hover {
+        color: #00aaff;
+        text-decoration: underline;
+    }
+
+    .breadcrumb-item.active {
+        color: #b0b0b0;
+        font-weight: 500;
+    }
+
+    .breadcrumb-item+.breadcrumb-item::before {
+        color: #b0b0b0;
+    }
+
+    /* Container */
+    .container {
+        max-width: 1200px;
+        padding: 0 1rem;
+    }
+
+    /* Card */
+    .card {
+        border: none;
+        border-radius: 1rem;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+    }
+
+    .card-body {
+        padding: 1.5rem;
+    }
+
+    /* Text */
+    .text-primary {
+        color: #00aaff !important;
+    }
+
+    .lead {
+        font-size: 1.25rem;
+        font-weight: 400;
+        color: #1a1a1a;
+    }
+
+    /* Button */
+    .btn-primary {
+        background: #00aaff;
+        border: none;
+        border-radius: 0.75rem;
+        padding: 0.8rem 1.5rem;
+        transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        background: #0088cc;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 136, 204, 0.3);
+    }
+
+    /* Mobile View */
+    @@media (max-width: 768px) {
+        .section-bar {
+            padding: 0.75rem;
+            border-radius: 0;
+        }
+
+        .breadcrumb {
+            font-size: 0.9rem;
+        }
+
+        .container {
+            padding: 0 0.75rem;
+        }
+
+        .card {
+            margin: 0 -0.75rem;
+            border-radius: 0;
+        }
+
+        .card-body {
+            padding: 1rem;
+        }
+
+        .lead {
+            font-size: 1.1rem;
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 0.75rem;
+            font-size: 0.9rem;
+        }
+    }
+
+    @@media (max-width: 575.98px) {
+        .card-body {
+            padding: 0.75rem;
+        }
+
+        .h3 {
+            font-size: 1.5rem;
+        }
+    }
+</style>

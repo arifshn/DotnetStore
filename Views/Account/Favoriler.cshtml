@@ -1,0 +1,173 @@
+@model List<dotnet_store.Models.Favorite>
+@section Bar {
+    <section class="bg-primary p-3">
+        <div class="container">
+            <nav>
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item">
+                        <a href="/">Anasayfa</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        Kullanıcı Bilgileri
+                    </li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+}
+<section class="bg-light py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-3 mb-4 mb-md-0">
+
+                @await Html.PartialAsync("Partials/Site/_AccountSidebar")
+            </div>
+            <div class="col-12 col-md-9">
+
+                <div class="card shadow-lg">
+                    <div class="card-header bg-white py-4">
+                        <h4 class="card-title text-center mb-0">
+                            <i class="fa fa-user-edit me-2"></i>Kullanıcı Bilgileri
+                        </h4>
+                    </div>
+                    <div class="card-body p-4">
+                        @if (Model.Count == 0)
+                        {
+                            <p>Henüz favori ürününüz yok.</p>
+                        }
+                        else
+                        {
+                            <div class="row">
+                                @foreach (var item in Model)
+                                {
+                                    <div class="col-md-4 mb-3">
+                                        <div class="card">
+                                            <img src="~/img/@item.Urun?.Resim" class="card-img-top" alt="@item.Urun?.UrunAdi" />
+                                            <div class="card-body">
+                                                <h5 class="card-title">@item.Urun?.UrunAdi</h5>
+                                                <p class="card-text">@item.Urun?.Fiyat ₺</p>
+
+                                                <form asp-controller="Favorites" asp-action="RemoveFromFavorites" method="post">
+                                                    <input type="hidden" name="urunId" value="@item.UrunId" />
+                                                    <button type="submit" class="btn btn-sm btn-danger">Favoriden
+                                                        Kaldır</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .card {
+        border-radius: 15px;
+        border: none;
+        transition: all 0.3s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+    }
+
+    .card-header {
+        border-bottom: none;
+        border-radius: 15px 15px 0 0 !important;
+    }
+
+    .input-group-text {
+        border-radius: 10px 0 0 10px;
+    }
+
+    .form-control {
+        border-radius: 0 10px 10px 0;
+        border-left: none;
+    }
+
+    .form-control:focus {
+        box-shadow: none;
+        border-color: #dee2e6;
+    }
+
+    .btn-primary {
+        border-radius: 10px;
+        padding: 12px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        transform: translateY(-2px);
+    }
+
+    .alert {
+        border-radius: 10px;
+        border: none;
+    }
+
+    @@media (max-width: 768px) {
+        .container {
+            padding: 0 15px;
+        }
+
+        .card {
+            margin: 0 -15px;
+            border-radius: 0;
+        }
+
+        .card-header {
+            border-radius: 0 !important;
+            padding: 1.5rem 1rem;
+        }
+
+        .card-body {
+            padding: 1.5rem 1rem;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+        }
+
+        .form-label {
+            font-size: 0.9rem;
+        }
+
+        .input-group-text {
+            padding: 0.5rem;
+        }
+
+        .form-control {
+            padding: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .btn {
+            font-size: 0.9rem;
+            padding: 0.75rem;
+        }
+
+        .alert {
+            margin: 0 -1rem 1rem -1rem;
+            border-radius: 0;
+        }
+
+        .breadcrumb {
+            font-size: 0.8rem;
+        }
+
+        .bg-primary {
+            padding: 0.75rem 0;
+        }
+
+        .col-md-3 {
+            margin-bottom: 1.5rem;
+        }
+    }
+</style>

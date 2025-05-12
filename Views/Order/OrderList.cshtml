@@ -1,0 +1,376 @@
+@model List<Order>
+
+@section Bar {
+    <section class="section-bar p-3">
+        <div class="container">
+            <nav>
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item">
+                        <a href="/" class="text-white text-decoration-none">Anasayfa</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Siparişlerim</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+}
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-3 mb-4 mb-md-0">
+                @await Html.PartialAsync("Partials/Site/_AccountSidebar")
+            </div>
+            <div class="col-12 col-md-9">
+                <div class="card border-0 shadow-sm rounded-4">
+                    <div class="card-header bg-white border-0 py-4">
+                        <h4 class="card-title text-center mb-0 text-primary">
+                            <i class="fas fa-shopping-bag me-2"></i>Siparişlerim
+                        </h4>
+                    </div>
+                    <div class="card-body p-4 p-md-5">
+                        @if (Model.Count == 0)
+                        {
+                            <div class="alert alert-info text-center rounded-3">
+                                <i class="fas fa-info-circle me-2"></i>Henüz siparişiniz yok.
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="accordion" id="orders">
+                                @foreach (var order in Model)
+                                {
+                                    <div class="accordion-item border-0 mb-3 rounded-3 shadow-sm">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed bg-white" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#order_@order.Id">
+                                                <div class="d-flex justify-content-between w-100 align-items-center">
+                                                    <div>
+                                                        <i class="fas fa-shopping-cart me-2 text-primary"></i>
+                                                        Sipariş No: #@order.Id
+                                                    </div>
+                                                    <div class="text-muted small">
+                                                        <i class="fas fa-calendar me-1"></i>
+                                                        @order.SiparisTarihi.ToString("dd MMM yyyy")
+                                                    </div>
+                                                </div>
+                                            </button>
+                                        </h2>
+                                        <div id="order_@order.Id" class="accordion-collapse collapse" data-bs-parent="#orders">
+                                            <div class="accordion-body p-4">
+                                                <div class="row mb-4">
+                                                    <div class="col-md-6">
+                                                        <h6 class="mb-2"><i class="fas fa-user me-2 text-primary"></i>Müşteri
+                                                            Bilgileri</h6>
+                                                        <p class="mb-1">@order.AdSoyad</p>
+                                                        <p class="mb-1">@order.TelefonNumarasi</p>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <h6 class="mb-2"><i
+                                                                class="fas fa-map-marker-alt me-2 text-primary"></i>Teslimat
+                                                            Adresi</h6>
+                                                        <p class="mb-1">@order.AdresSatiri</p>
+                                                        <p class="mb-1">@order.Sehir / @order.PostaKodu</p>
+                                                    </div>
+                                                </div>
+
+                                                <div class="table-responsive">
+                                                    <table class="table table-hover">
+                                                        <thead class="table-light">
+                                                            <tr>
+                                                                <th style="width: 80px;">Resim</th>
+                                                                <th>Ürün</th>
+                                                                <th>Adet</th>
+                                                                <th>Fiyat</th>
+                                                                <th>Toplam</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach (var item in order.OrderItems)
+                                                            {
+                                                                <tr>
+                                                                    <td>
+                                                                        <img src="~/img/@item.Urun.Resim" class="img-fluid rounded"
+                                                                            style="max-height: 50px; object-fit: cover;">
+                                                                    </td>
+                                                                    <td>@item.Urun.UrunAdi</td>
+                                                                    <td>@item.Miktar</td>
+                                                                    <td>@item.Fiyat ₺</td>
+                                                                    <td>@(item.Fiyat * item.Miktar) ₺</td>
+                                                                </tr>
+                                                            }
+                                                        </tbody>
+                                                        <tfoot class="table-light">
+                                                            <tr>
+                                                                <td colspan="4" class="text-end"><strong>Toplam Tutar:</strong>
+                                                                </td>
+                                                                <td><strong>@order.Toplam() ₺</strong></td>
+                                                            </tr>
+                                                        </tfoot>
+                                                    </table>
+                                                </div>
+
+                                                <div class="row mt-4">
+                                                    @if (!string.IsNullOrEmpty(order.KargoTakipNo))
+                                                    {
+                                                        <div class="col-md-6">
+                                                            <div class="border p-3 rounded-3 bg-light">
+                                                                <h6 class="mb-2"><i
+                                                                        class="fas fa-info-circle me-2 text-primary"></i>Sipariş
+                                                                    Durumu</h6>
+                                                                <span
+                                                                    class="badge 
+                                                                                                                  @(order.Durum == SiparisDurumu.Hazirlaniyor ? "bg-warning text-dark" :
+                                                                                                                                                                                                                                                                                              order.Durum == SiparisDurumu.KargoyaVerildi ? "bg-info" :
+                                                                                                                                                                                                                                                                                              order.Durum == SiparisDurumu.TeslimEdildi ? "bg-success" :
+                                                                                                                                                                                                                                                                                              "bg-secondary")">
+                                                        @order.Durum
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 mt-3 mt-md-0">
+                                                <div class="border p-3 rounded-3 bg-light">
+                                                    <h6 class="mb-2"><i
+                                                            class="fas fa-shipping-fast me-2 text-primary"></i>Kargo
+                                                        Takip No</h6>
+                                                    <span class="text-primary fw-semibold">@order.KargoTakipNo</span>
+                                                </div>
+                                            </div>
+                                                                                        }
+                                                    else
+                                                    {
+                                                        <div class="col-12">
+                                                            <div class="border p-3 rounded-3 bg-light">
+                                                                <h6 class="mb-2"><i
+                                                                        class="fas fa-info-circle me-2 text-primary"></i>Sipariş
+                                                                    Durumu</h6>
+                                                                <span
+                                                                    class="badge 
+                                                                                                                  @(order.Durum == SiparisDurumu.Hazirlaniyor ? "bg-warning text-dark" :
+                                                                                                                                                                                                                                                                                              order.Durum == SiparisDurumu.KargoyaVerildi ? "bg-info" :
+                                                                                                                                                                                                                                                                                              order.Durum == SiparisDurumu.TeslimEdildi ? "bg-success" :
+                                                                                                                                                                                                                                                                                              "bg-secondary")">
+                                                        @order.Durum
+                                                    </span>
+                                                </div>
+                                            </div>
+                                                                                        }
+
+                                                    <div class="col-12 mt-3">
+                                                        <div class="border p-3 rounded-3 bg-light">
+                                                            <h6 class="mb-2"><i
+                                                                    class="fas fa-calendar-check me-2 text-primary"></i>Tahmini
+                                                                Teslim Tarihi</h6>
+                                                            <span class="text-muted fw-semibold">
+                                                                @order.SiparisTarihi.AddDays(4).ToString("dd MMM yyyy")
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            // Accordion öğelerine hover efekti
+            $('.accordion-item').hover(
+                function () {
+                    $(this).addClass('shadow');
+                },
+                function () {
+                    $(this).removeClass('shadow');
+                }
+            );
+
+            // Tablo satırlarına hover efekti
+            $('.table tbody tr').hover(
+                function () {
+                    $(this).addClass('bg-light');
+                },
+                function () {
+                    $(this).removeClass('bg-light');
+                }
+            );
+        });
+    </script>
+}
+
+<style>
+    .bg-gradient-primary {
+        background: linear-gradient(90deg, #007bff, #00b7eb);
+    }
+
+    .card {
+        border-radius: 1rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15) !important;
+    }
+
+    .accordion-item {
+        border-radius: 0.75rem !important;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+
+    .accordion-item:hover {
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .accordion-button {
+        background: #fff;
+        border: none;
+        padding: 1rem 1.5rem;
+        font-weight: 500;
+        color: #495057;
+        transition: background 0.3s ease;
+    }
+
+    .accordion-button:not(.collapsed) {
+        background: #f8f9fa;
+        color: #007bff;
+    }
+
+    .accordion-button:focus {
+        box-shadow: none;
+    }
+
+    .table {
+        border-collapse: separate;
+        border-spacing: 0;
+    }
+
+    .table th,
+    .table td {
+        vertical-align: middle;
+        padding: 0.75rem;
+    }
+
+    .table thead th {
+        border-bottom: 2px solid #dee2e6;
+        font-weight: 600;
+        color: #495057;
+    }
+
+    .table-hover tbody tr:hover {
+        background-color: #f8f9fa;
+    }
+
+    .badge {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+        border-radius: 0.5rem;
+    }
+
+    .alert-info {
+        background: #d1ecf1;
+        border: none;
+        border-radius: 0.5rem;
+    }
+
+    /* Mobil Görünüm */
+    @@media (max-width: 768px) {
+        .container {
+            padding: 0 1rem;
+        }
+
+        .card {
+            border-radius: 0;
+            margin: 0 -1rem;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        .accordion-button {
+            padding: 0.75rem 1rem;
+            font-size: 0.9rem;
+        }
+
+        .accordion-body {
+            padding: 1rem;
+        }
+
+        .table th,
+        .table td {
+            font-size: 0.9rem;
+            padding: 0.5rem;
+        }
+
+        .table-responsive {
+            margin: 0 -1rem;
+        }
+
+        .badge {
+            font-size: 0.8rem;
+            padding: 0.4rem 0.8rem;
+        }
+
+        .breadcrumb {
+            font-size: 0.85rem;
+        }
+    }
+
+    .section-bar {
+        background: linear-gradient(90deg, #1a1a1a, #2a2a2a);
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .breadcrumb {
+        background: transparent;
+        font-size: 1rem;
+    }
+
+    .breadcrumb-item a {
+        color: #ffffff;
+        transition: color 0.3s ease;
+    }
+
+    .breadcrumb-item a:hover {
+        color: #00aaff;
+    }
+
+    .breadcrumb-item.active {
+        color: #b0b0b0;
+    }
+
+    .breadcrumb-item+.breadcrumb-item::before {
+        color: #b0b0b0;
+    }
+
+    .container {
+        max-width: 1200px;
+        padding: 0 1rem;
+    }
+
+    /* Mobil Görünüm */
+    @@media (max-width: 768px) {
+        .section-bar {
+            padding: 0.75rem;
+            border-radius: 0;
+        }
+
+        .breadcrumb {
+            font-size: 0.9rem;
+        }
+
+        .container {
+            padding: 0 0.75rem;
+        }
+    }
+</style>
